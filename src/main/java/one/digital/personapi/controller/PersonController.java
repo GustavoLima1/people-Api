@@ -4,6 +4,7 @@ import one.digital.personapi.dto.MessageResponseDTO;
 import one.digital.personapi.dto.request.PersonDTO;
 
 
+import one.digital.personapi.exception.PersonNotFoundException;
 import one.digital.personapi.service.PersonService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/people")
@@ -36,6 +37,10 @@ public class PersonController {
     @GetMapping
     public List<PersonDTO> getAll (){
         return personService.listAll();
+    }
 
+    @GetMapping("/{id}")
+    public PersonDTO findById ( @PathVariable Long id) throws PersonNotFoundException {
+         return personService.findById(id);
     }
 }
