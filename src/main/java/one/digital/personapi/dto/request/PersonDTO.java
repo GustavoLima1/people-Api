@@ -32,6 +32,7 @@ public class PersonDTO {
     private String cpf;
 
     private String birthDate;
+
     @Valid
     @NotEmpty
     private List<PhoneDTO> phones;
